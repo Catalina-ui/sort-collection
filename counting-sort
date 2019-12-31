@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+typedef long long ll;
+
+vector<ll> counting(vector<ll> vec,ll a)
+{
+    vector<ll> area(a,0);
+    ll size = vec.size();
+    for (int i = 0; i < size;i++)
+        area[vec[i]]++;
+    vector<ll> ans(0);
+    for (int i = 0; i < a;i++){
+        while(area[i]-- > 0)
+            ans.push_back(i);
+    }
+        return ans;
+}
