@@ -9,9 +9,7 @@ vector<ll> bubble(vector<ll> vec)
     for (int i = 0; i < size;i++)
         for (int j = 0; j < size - 1;j++){
             if(vec[j] > vec[j+1]){
-                ll tmp = vec[j + 1];
-                vec[j + 1] = vec[j];
-                vec[j] = tmp;
+                swap(vec[j],vec[j+1]);
             }
         }
     return vec;
