@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+typedef long long ll;
+
+vector<ll> bubble(vector<ll> vec)
+{
+    ll size = vec.size();
+    for (int i = 0; i < size;i++)
+        for (int j = 0; j < size - 1;j++){
+            if(vec[j] > vec[j+1]){
+                ll tmp = vec[j + 1];
+                vec[j + 1] = vec[j];
+                vec[j] = tmp;
+            }
+        }
+    return vec;
+}
