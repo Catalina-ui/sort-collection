@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+typedef long long ll;
+
+vector<ll> merge(vector<ll> a,vector<ll> b){
+    ll as = a.size(), bs = b.size(),at = 0,bt = 0;
+    vector<ll> c(0);
+    while(at < as || bt < bs){
+        if((at < as && a[at] < b[bt]) || bt >= bs){
+            c.push_back(a[at]);
+            at++;
+        }else{
+            c.push_back(b[bt]);
+            bt++;
+        }
+    }
+    return c;
+}
+
+vector<ll> merge_sort(vector<ll> a){
+    if(a.size() > 1){
+        int m = a.size() / 2;
+        int n = a.size() - m;
+        vector<ll> b(m);
+        vector<ll> c(n);
+        for (int i = 0; i < m;i++)
+            b[i] = a[i];
+        for (int i = 0; i < n;i++)
+            c[i] = a[i + m];
+        b = merge_sort(b);
+        c = merge_sort(c);
+        a = merge(b, c);
+    }
+    return a;
+}
