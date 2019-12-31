@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+typedef long long ll;
+
+vector<ll> quick(vector<ll> vec,ll left,ll right){
+    if(left < right){
+        ll r = right, l = left;
+        ll pivot = vec[l+(r - l)/2];
+        while(true){
+            while(vec[l] < pivot)
+                l++;
+            while(vec[r] > pivot)
+                r--;
+            if(l >= r)
+                break;
+            swap(vec[l], vec[r]);
+            l++;
+            r--;
+        }
+        vec = quick(vec, left, l-1);
+        vec = quick(vec, r+1,right);
+    }
+    return vec;
+}
+
+vector<ll> quick_sort(vector<ll> vec){
+    ll left = 0,right = vec.size()-1;
+    return quick(vec, left, right);
+}
